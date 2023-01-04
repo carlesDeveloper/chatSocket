@@ -7,6 +7,7 @@ import Chat from './chat';
 const socket = io('http://localhost:3003');
 function App() {
 
+  const user = `user${Math.floor(100000 + Math.random() * 900000)}`;
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [lastPong, setLastPong] = useState(null);
 
@@ -63,7 +64,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <Chat />
+      <Chat user={user} />
     </div>
   )
 }

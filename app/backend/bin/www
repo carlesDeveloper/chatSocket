@@ -35,9 +35,14 @@ const io = require("socket.io")(server, {
 
 io.on('connection', (socket) => {
   socket.on("ping", (arg) => {
-    console.log("esta entrando en ping"); // world
+    console.log("esta entrando al ping"); // world
     io.emit("pong")
   });
+  socket.on("chat", (arg) => {
+    io.emit("mensajesChat", arg)
+
+  });
+
   console.log('a user connected');
 });
 
