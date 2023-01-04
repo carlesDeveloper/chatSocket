@@ -34,8 +34,14 @@ const io = require("socket.io")(server, {
 });
 
 io.on('connection', (socket) => {
+  socket.on("ping", (arg) => {
+    console.log("esta entrando en ping"); // world
+    io.emit("pong")
+  });
   console.log('a user connected');
 });
+
+
 
 server.listen(port);
 server.on('error', onError);

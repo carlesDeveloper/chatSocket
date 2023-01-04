@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import io from 'socket.io-client';
 import './App.css'
+import Chat from './chat';
 
 const socket = io('http://localhost:3003');
 function App() {
@@ -62,9 +63,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Chat />
     </div>
   )
 }
