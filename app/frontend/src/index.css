@@ -68,3 +68,23 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.chat-box{
+  display: flex;
+  flex-direction: column;
+}
+.user-box{
+  width: 100%;
+  border: 1px solid black;
+}
+
+.message-box{
+  width: 100%;
+  border: 1px solid black;
+  height: 200px;
+}
+
+.input-message-box{
+  width: 100%;
+  border: 1px solid black;
+}
