@@ -1,19 +1,16 @@
 import React,{useState, useEffect} from 'react'
 import { useForm } from "react-hook-form";
-import io from 'socket.io-client';
 
-const socket = io('http://localhost:3003');
-export default  function Chat({user}){
+export default  function Chat({user, messages, socket}){
     const { register, handleSubmit } = useForm();
-    const [mensajes, setMensajes] = useState({})
-    useEffect(() => {
-        console.log("entra en el useEffect")
-        socket.on('mensajesChat', (mensajes) => {
-            console.log("entra en el socket")
-            debugger;
-            setMensajes(mensajes)
-        });
-    },[])
+    console.log(messages)
+    // useEffect(() => {
+    //     console.log("entra en el useEffect")
+    //     socket.on('mensajesChat', (mensajes) => {
+    //         debugger;
+    //         messages.push(mensajes)
+    //     });
+    // },[])
     const sendValues = (d) => {
         console.log("se envian los valores")
         socket.emit("chat",{user: user,mensaje: d.message})
@@ -23,7 +20,7 @@ export default  function Chat({user}){
             <form onSubmit={handleSubmit(sendValues)}>
                 <div className='chat-box'>
                     <div className='user-box'>{user}</div>
-                    <div className='message-box'>{mensajes.user}: {mensajes.mensaje}</div>
+                    <div className='message-box'><ul>{messages !== undefined && messages.map(e => (<li>{e.user}: {e.mensaje}</li>))}</ul></div>
                     <input 
                         className='input-message-box' 
                         type="text" 
